@@ -1,140 +1,3 @@
-local V3 = Vector3.new
-local V2 = Vector2.new
-local inf = math.huge
-getgenv().Settings = {
-    ["Zephylua"] = {
-        ["Enabled"] = True,
-        ["DOT"] = true,
-        ["AIRSHOT"] = false,
-        ["Prediction"] = {
-            ["Horizontal"] = 0.185,
-            ["Vertical"] = 0.1,
-        },
-        ["CamPrediction"] = {
-            ["Prediction"] = {
-                ["Horizontal"] = 0.185,
-                ["Vertical"] = 0.1,
-            },
-        },
-        ["NOTIF"] = true,
-        ["AUTOPRED"] = false,
-        ["AdvancedAutoPred"] = false,
-        ["FOV"] = inf,
-        ["RESOLVER"] = false,
-        ["LOCKTYPE"] = "Namecall",
-        ["TargetStats"] = false,
-        ["Resolver"] = {
-              ["Enabled"] = false,
-              ["Type"] = "None",
-        },
-       ["Camera"] = {
-        ["Enabled"] = false,
-        ["HoodCustomsBypass"] = false,
-     },
-        ["OnHit"] = {
-             ["Enabled"] = true,
-             ["Hitchams"] = {
-                  ["Enabled"] = false,
-                  ["Color"] = Color3.fromRGB(128,128,128),
-                  ["Transparency"] = 0,
-                  ["Material"] = "ForceField",
-             },
-            ["Hitsound"] = {
-                  ["Enabled"] = false,
-                  ["Sound"] = "hitsounds/sparkle.wav",
-                  ["Volume"] = 2,
-            },
-        }
-    },
-	["Silent"] = {
-		["Enabled"] = false,
-		["AimPart"] = "HumanoidRootPart",
-		["WallCheck"] = false,
-		["Visualize"] = false,
-		["Prediction"] = {
-		   ["Horizontal"] = 0.15,
-		   ["Vertical"] = 0.05,
-		},
-	    ["AutoPrediction"] = {
-	        ["Enabled"] = false,
-	        ["Type"] = "Normal", --//Normal, Custom
-           ["ping20_30"] = 0.12588,
-           ["ping30_40"] = 0.11911,
-           ["ping40_50"] = 0.12471,
-           ["ping50_60"] = 0.13766,
-           ["ping60_70"] = 0.13731,
-           ["ping70_80"] = 0.13951,
-           ["ping80_90"] = 0.14181,
-           ["ping90_100"] = 0.148,
-           ["ping100_110"] = 0.156,
-           ["ping110_120"] = 0.1567,
-           ["ping120_130"] = 0.1601,
-           ["ping130_140"] = 0.1637,
-           ["ping140_150"] = 0.173,
-           ["ping150_160"] = 0.1714,
-           ["ping160_170"] = 0.1863,
-           ["ping170_180"] = 0.1872,
-           ["ping180_190"] = 0.1848,
-           ["ping190_200"] = 0.1865,
-	    },
-		["Mode"] = "Namecall", --index,namecal
-	},
-	["FOV"] = {
-		["Enabled"] = false,
-		["Size"] = 23,
-		["Filled"] = false,
-		["Thickness"] = 0.66,
-		["Transparency"] = 0.9,
-		["Color"] = Color3.fromRGB(255,255,255),
-	},
-	["Misc"] = {
-	    ["NoDelay"] = false,
-	    ["AutoReload"] = false,
-	    ["AutoAir"] = {
-	        ["Enabled"] = false,
-	        ["Interval"] = 0.5,
-	    },
-	    ["CMDS"] = { 
-	        ["Enabled"] = false,
-	        ["FOVPrefix"] = "B",
-	        ["Prediction"] = "A",
-	   },
-	},
-	["Checks"] = { --entirely not
-	    ["UnlovkOnKO"] = false,
-	    ["TrashTalkOnKO"] = false,
-	},
-	["Resolution"] = {
-	    ["Value"] = 1,
-	   },
-	["Resolvers"] = {  --entirely not
-	    ["Enabled"] = false,
-	    ["AutoDetect"] = false,
-	    ["Type"] = "Recalculator",
-	},
-    ["Visuals"] = {
-        ["Ambient"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255),
-        },
-        ["OutDoor Ambient"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255)
-        },
-        ["Fog Modifications"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255),
-            ["Start"] = 15,
-            ["End"] = 100 
-        },
-        ["ColorCorrection"] = {
-            ["Enabled"] = false,
-            ["Brightness"] = 0,
-            ["Saturation"] = 5,
-            ["Contrast"] = 2,
-        },
-    },
-}
 getgenv().DistancesMid = 50
 getgenv().DistancesClose = 10
 getgenv().AimSpeed = 1
@@ -195,14 +58,14 @@ function calculateVelocity(initialPos, finalPos, timeInterval)
         e.Name = "PP"
         e.Adornee = Adornee
         e.Size = UDim2.new(Size, Size2, Size, Size2)
-        e.AlwaysOnTop = getgenv().Settings.FearLas.DOT
+        e.AlwaysOnTop = getgenv().Settings.Zephylua.DOT
         local a = Instance.new("Frame", e)
-        if getgenv().Settings.FearLas.DOT == true then
+        if getgenv().Settings.Zephylua.DOT == true then
         a.Size = UDim2.new(1, 1, 1, 1)
         else
         a.Size = UDim2.new(0, 0, 0, 0)
         end
-        if getgenv().Settings.FearLas.DOT == true then
+        if getgenv().Settings.Zephylua.DOT == true then
         a.Transparency = 0
         a.BackgroundTransparency = 0
         else
@@ -211,7 +74,7 @@ function calculateVelocity(initialPos, finalPos, timeInterval)
         end
         a.BackgroundColor3 = Color
         local g = Instance.new("UICorner", a)
-        if getgenv().Settings.FearLas.DOT == false then
+        if getgenv().Settings.Zephylua.DOT == false then
         g.CornerRadius = UDim.new(1, 1)
         else
         g.CornerRadius = UDim.new(1, 1) 
@@ -248,19 +111,19 @@ function calculateVelocity(initialPos, finalPos, timeInterval)
     spawn(function()
         placemarker.Anchored = true
         placemarker.CanCollide = false
-        if getgenv().Settings.FearLas.DOT == true then
+        if getgenv().Settings.Zephylua.DOT == true then
         placemarker.Size = V3(0, 0, 0)
         else
         placemarker.Size = V3(0, 0, 0)
         end
         placemarker.Transparency = 0.75
-        if getgenv().Settings.FearLas.DOT then
+        if getgenv().Settings.Zephylua.DOT then
         makemarker(placemarker, placemarker, Color3.fromRGB(128,128,128), 1, 0)
         end
     end)
  local Tool = Instance.new("Tool")
 Tool.RequiresHandle = false
-Tool.Name = "Zephy.Lua"
+Tool.Name = "Zephylua | V2"
 Tool.Parent = game.Players.LocalPlayer.Backpack
 local player = game.Players.LocalPlayer
 local function connectCharacterAdded()
@@ -274,7 +137,7 @@ function hitsound()
     local Hit = Instance.new("Sound")
     Hit.Parent = game.SoundService
     Hit.SoundId = getcustomasset(getgenv().Settings.FearLas.OnHit.Hitsound.Sound)
-    Hit.Volume = getgenv().Settings.FearLas.OnHit.Hitsound.Volume
+    Hit.Volume = getgenv().Settings.Zephylua.OnHit.Hitsound.Volume
     Hit.Looped = false
     Hit:Play()
     Hit.Ended:Connect(function()                                         Hit:Destroy()
@@ -282,11 +145,11 @@ function hitsound()
 end
 
 Tool.Activated:Connect(function()
-if getgenv().Settings.FearLas.Enabled or getgenv().Settings.FearLas.Camera.Enabled then
+if getgenv().Settings.Zephylua.Enabled or getgenv().Settings.Zephylua.Camera.Enabled then
             if enabled == true then
                 enabled = false
                     Plr = LockToPlayer()
-                if getgenv().Settings.FearLas.NOTIF == true then 
+                if getgenv().Settings.Zephylua.NOTIF == true then 
  SendNotification("Unlocked")
             end
             else
@@ -294,7 +157,7 @@ if getgenv().Settings.FearLas.Enabled or getgenv().Settings.FearLas.Camera.Enabl
                 TargetPlayer = tostring(Plr)
                 enabled = true
 local oldHealt = game.Players[TargetPlayer].Character.Humanoid.Health
-                        if getgenv().Settings.FearLas.OnHit.Hitsound.Enabled and Plr ~= nil then
+                        if getgenv().Settings.Zephylua.OnHit.Hitsound.Enabled and Plr ~= nil then
 
                              game.Players[TargetPlayer].Character.Humanoid.HealthChanged:Connect(function(neHealth)                            
 if neHealth < oldHealt then
@@ -308,7 +171,7 @@ oldHealt = neHealth
 end)
 end                                      
               
-if getgenv().Settings.FearLas.OnHit.Hitchams.Enabled then
+if getgenv().Settings.Zephylua.OnHit.Hitchams.Enabled then
    
         if Plr ~= nil then  game.Players[TargetPlayer].Character.Humanoid.HealthChanged:Connect(function(neHealth)
         local Clone = game.Players[TargetPlayer].Character:Clone()
@@ -330,9 +193,9 @@ if getgenv().Settings.FearLas.OnHit.Hitchams.Enabled then
                     else
                         Obj.CanCollide = false
                         Obj.Anchored = true
-                        Obj.Material = getgenv().Settings.FearLas.OnHit.Hitchams.Material
-                        Obj.Color = getgenv().Settings.FearLas.OnHit.Hitchams.Color
-                        Obj.Transparency = getgenv().Settings.FearLas.OnHit.Hitchams.Transparency
+                        Obj.Material = getgenv().Settings.Zephylua.OnHit.Hitchams.Material
+                        Obj.Color = getgenv().Settings.Zephylua.OnHit.Hitchams.Color
+                        Obj.Transparency = getgenv().Settings.Zephylua.OnHit.Hitchams.Transparency
                         Obj.Size = Obj.Size + V3(0.05, 0.05, 0.05)
                     end
                 end
@@ -354,7 +217,7 @@ if getgenv().Settings.FearLas.OnHit.Hitchams.Enabled then
     end)
     end
 end
-                if getgenv().Settings.FearLas.NOTIF == true then
+                if getgenv().Settings.Zephylua.NOTIF == true then
 SendNotification("Target: "..Plr.Character.Humanoid.DisplayName)
                 end
             end
@@ -455,14 +318,14 @@ end
 
 spawn(function()
     while wait() do
-        if getgenv().Settings.FearLas.TargetStats and getgenv().Settings.FearLas.Enabled and enabled then
+        if getgenv().Settings.Zephylua.TargetStats and getgenv().Settings.Zephylua.Enabled and enabled then
             if Plr and IsAlive(Plr) then
                 Background.Visible = true
                 NameOfTarget.Text = tostring(Plr.Character.Humanoid.DisplayName).." ["..tostring(Plr.Name).."]"
                 Picture.Image  = "rbxthumb://type=AvatarHeadShot&id=" ..Plr.UserId.. "&w=420&h=420"
                 HealthBar:TweenSize(UDim2.new(Plr.Character.Humanoid.Health / Plr.Character.Humanoid.MaxHealth, 0, 1, 0), "In", "Linear", 0.25)
                 spawn(function()
-                    if getgenv().Settings.FearLas.TargetStats == false then
+                    if getgenv().Settings.Zephylua.TargetStats == false then
                         Background.Visible = false
                     end
                 end)
@@ -474,7 +337,7 @@ spawn(function()
 end)
     function LockToPlayer()
         local closestPlayer
-        local shortestDistance = getgenv().Settings.FearLas.FOV
+        local shortestDistance = getgenv().Settings.Zephylua.FOV
  
         for i, v in pairs(game.Players:GetPlayers()) do
             if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") then
@@ -508,7 +371,7 @@ end
     local ping = nil;
 local LocalHL = Instance.new("Highlight") 
     game:GetService"RunService".Stepped:connect(function()
-        if enabled and getgenv(). Settings.FearLas.Enabled and Plr.Character ~= nil and Plr.Character:FindFirstChild("HumanoidRootPart") or enabled and getgenv(). Settings.FearLas.Camera.Enabled and Plr.Character ~= nil and Plr.Character:FindFirstChild("HumanoidRootPart") then
+        if enabled and getgenv(). Settings.Zephylua.Enabled and Plr.Character ~= nil and Plr.Character:FindFirstChild("HumanoidRootPart") or enabled and getgenv(). Settings.Zephylua.Camera.Enabled and Plr.Character ~= nil and Plr.Character:FindFirstChild("HumanoidRootPart") then
 if getgenv().Prediction == "Normal" then
             placemarker.CFrame = CFrame.new(GetLockPrediction(Plr.Character[getgenv().SelectedPart]).Position)         
 elseif getgenv().Prediction == "Yun" then
@@ -530,7 +393,7 @@ pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetVal
 split = string.split(pingvalue,'(')
 ping = tonumber(split[1])
 
-if getgenv().Settings.FearLas.AdvancedAutoPred == true and enabled then
+if getgenv().Settings.Zephylua.AdvancedAutoPred == true and enabled then
     getgenv().CAMJUMPPREDICTION = 0.05
     if ping > 300 then
         getgenv().CAMPREDICTION = 0.434
@@ -594,7 +457,7 @@ if getgenv().Settings.FearLas.AdvancedAutoPred == true and enabled then
         getgenv().CAMPREDICTION = 0.1287
    end
 end
-if getgenv().Settings.FearLas.AUTOPRED == true then
+if getgenv().Settings.Zephylua.AUTOPRED == true then
 if getgenv().AutoPredType == "Normal" then
 if getgenv().Prediction == "Normal" then
 getgenv().JUMPPREDICTION = tostring(ping/1500)
@@ -757,14 +620,14 @@ elseif getgenv().AutoPredType == "Fake Celex" then
 end
 end
 
-if getgenv().Settings.FearLas.Resolver.Enabled then
-if getgenv().Settings.FearLas.Resolver.Type == "Delta Time" then
+if getgenv().Settings.Zephylua.Resolver.Enabled then
+if getgenv().Settings.Zephylua.Resolver.Type == "Delta Time" then
 print("wsg")
 end
-if getgenv().Settings.FearLas.Resolver.Type == "Recalculator" then
+if getgenv().Settings.Zephylua.Resolver.Type == "Recalculator" then
 print("wsg")
 end
-if getgenv().Settings.FearLas.Resolver.Type == "No Y Velocity" then
+if getgenv().Settings.Zephylua.Resolver.Type == "No Y Velocity" then
 print("wsg")
 end
 end
@@ -772,7 +635,7 @@ end
 
 
 game:GetService"RunService".Stepped:connect(function()
-    if enabled and getgenv().Settings.FearLas.Camera.Enabled then
+    if enabled and getgenv().Settings.Zephylua.Camera.Enabled then
         if Plr ~= nil then
             local shakeOffset = V3(
                 math.random(-getgenv().ShakeX, getgenv().ShakeX),
@@ -791,7 +654,7 @@ end)
     mt.__namecall = newcclosure(function(...)
         local args = {...}
         local vap = {"UpdateMousePos", "GetMousePos", "MousePos", "MOUSE", "MousePosUpdate"}
-        if enabled and getnamecallmethod() == "FireServer" and table.find(vap, args[2]) and getgenv().Settings.FearLas.Enabled and Plr.Character ~= nil and getgenv().Settings.FearLas.LOCKTYPE == "Namecall" then
+        if enabled and getnamecallmethod() == "FireServer" and table.find(vap, args[2]) and getgenv().Settings.Zephylua.Enabled and Plr.Character ~= nil and getgenv().Settings.Zephylua.LOCKTYPE == "Namecall" then
             if getgenv().Prediction == "Normal" then
             args[3] = GetLockPrediction(Plr.Character[getgenv().SelectedPart]).Position
             elseif getgenv().Prediction == "Yun" then
@@ -811,7 +674,7 @@ local Hooks = {}
 local Client = game.Players.LocalPlayer
 
 Hooks[1] = hookmetamethod(Client:GetMouse(), "__index", newcclosure(function(self, index)
-    if index == "Hit" and getgenv().Settings.FearLas.LOCKTYPE == "Index" and enabled and Plr.Character ~= nil and getgenv().Settings.FearLas.Enabled then
+    if index == "Hit" and getgenv().Settings.Zephylua.LOCKTYPE == "Index" and enabled and Plr.Character ~= nil and getgenv().Settings.Zephylua.Enabled then
             local position = CFrame.new(GetLockPrediction(Plr.Character[getgenv().SelectedPart]).Position)
             return position
         
